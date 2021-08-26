@@ -5,6 +5,7 @@ import {NavLink} from 'react-router-dom';
 import {PATH} from "../../routes/Routes";
 
 const NavBar = () => {
+
     return (
         <StyledNavBar>
             <NavLink to={`${PATH.CREATE_CV}`}>

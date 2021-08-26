@@ -23,7 +23,7 @@ const Skills = () => {
 
     return (
         <div>
-            <h2 className='title'>Slills</h2>
+            <h2 className='title'>Skills</h2>
             <FormControl>
                 <InputLabel id="demo-mutiple-checkbox-label">Tag</InputLabel>
                 <Select
