@@ -1,15 +1,23 @@
-export interface PersonalDetailsInterface {
-    'First Name': string
-    'Last Name': string
-    'Wanted Job Title': string
-    'address': string
-    'birthDay': string
-    'city': string
-    'country': string
-    'email': string
-    'phone': string
-    'postal code': string
+export interface LogoInterface {
+    name: string
+    imgPath: string
+    img: string
 }
+
+export interface PersonalDetailsInterface {
+    firstName: string
+    lastName: string
+    wantedJobTitle: string
+    address: string
+    birthDay: string
+    city: string
+    country: string
+    email: string
+    phone: string
+    postalCode: string
+    logo: LogoInterface
+}
+
 export interface ProfessionalSummaryInterface {
     info: string
 }

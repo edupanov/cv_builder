@@ -1,5 +1,6 @@
 import React, {ChangeEvent, SyntheticEvent} from 'react';
 import {Checkbox, FormControl, Input, InputLabel, ListItemText, MenuItem, Select} from "@material-ui/core";
+import SaveButton from "../../../../shared/components/SaveButton";
 const skills = [
     'CSS',
     'HTML',
@@ -43,6 +44,7 @@ const Skills = () => {
                     ))}
                 </Select>
             </FormControl>
+            <SaveButton />
         </div>
     );
 };

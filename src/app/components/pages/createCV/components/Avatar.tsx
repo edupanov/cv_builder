@@ -1,11 +1,18 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, Dispatch, useState} from 'react';
 import Button from "@material-ui/core/Button";
 import Avatar from '@material-ui/core/Avatar'
 import AvatarEditor from "react-avatar-editor";
 import {Box, Slider} from "@material-ui/core";
+import {PersonalDetailsInterface} from "../types/cvInterface";
 
+type LogoPropsType = {
+    personalDetails: PersonalDetailsInterface
+    setPersonalDetails: Dispatch<React.SetStateAction<PersonalDetailsInterface>>
+}
 
-const Logo = () => {
+const Logo = (props: LogoPropsType) => {
+
+    const {personalDetails, setPersonalDetails} = props
     const [avatar, setAvatar] = useState<string>('')
 
     let editor = "";
@@ -16,6 +23,7 @@ const Logo = () => {
         croppedImg:
             "https://upload.wikimedia.org/wikipedia/commons/0/09/Man_Silhouette.png"
     });
+
 
     const handleSlider = (event: ChangeEvent<{}>, value: any) => {
         setPicture({
@@ -36,12 +44,9 @@ const Logo = () => {
     };
 
     const handleSave = () => {
-
         // @ts-ignore
         const canvasScaled = editor.getImageScaledToCanvas();
         const croppedImg = canvasScaled.toDataURL();
-        console.log(croppedImg)
-
 
         setPicture({
             ...picture,
@@ -50,6 +55,9 @@ const Logo = () => {
             croppedImg: croppedImg
         });
         setAvatar(croppedImg)
+
+        // @ts-ignore
+        setPersonalDetails({...personalDetails, logo: {name: picture.img.name, imgPath: croppedImg, img: avatar}})
 
 
         // if (contact.id) {

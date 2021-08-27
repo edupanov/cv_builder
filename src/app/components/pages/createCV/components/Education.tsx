@@ -1,5 +1,6 @@
 import React from 'react';
 import {FormControl, FormGroup} from "@material-ui/core";
+import SaveButton from "../../../../shared/components/SaveButton";
 
 const Education = () => {
     return (
@@ -12,6 +13,7 @@ const Education = () => {
                     </FormGroup>
                 </FormControl>
             </form>
+            <SaveButton />
         </div>
     );
 };

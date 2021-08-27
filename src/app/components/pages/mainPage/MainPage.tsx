@@ -11,7 +11,7 @@ const MainPage = () => {
             <div className='text'>
                 Here you can create your perfect resume
             </div>
-<Footer/>
+            <Footer/>
         </StyledMainPage>
     );
 };

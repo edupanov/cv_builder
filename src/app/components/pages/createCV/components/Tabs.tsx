@@ -31,7 +31,7 @@ function TabPanel(props: TabPanelProps) {
         >
             {value === index && (
                 <Box p={3}>
-                    <Typography>{children}</Typography>
+                    <div>{children}</div>
                 </Box>
             )}
         </div>
@@ -42,6 +42,7 @@ function a11yProps(index: any) {
     return {
         id: `vertical-tab-${index}`,
         'aria-controls': `vertical-tabpanel-${index}`,
+        className: 'tabPanel'
     };
 }
 
@@ -54,6 +55,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     tabs: {
         borderRight: `1px solid ${theme.palette.divider}`,
+        width: '25%'
     },
 }));
 

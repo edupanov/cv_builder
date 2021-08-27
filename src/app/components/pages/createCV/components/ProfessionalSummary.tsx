@@ -2,6 +2,7 @@ import React, {ChangeEvent, useState} from 'react';
 import {Button, FormControl, FormGroup, TextField} from "@material-ui/core";
 import {ProfessionalSummaryInterface} from "../types/cvInterface";
 import {useActions} from "../../../../store/hooks/useActions";
+import SaveButton from "../../../../shared/components/SaveButton";
 
 const ProfessionalSummary = () => {
     const {saveCv} = useActions()
@@ -32,7 +33,7 @@ const ProfessionalSummary = () => {
                     </FormGroup>
                 </FormControl>
             </form>
-            <Button className={'saveButton'} onClick={saveInfo}>save</Button>
+            <SaveButton />
         </div>
     );
 };

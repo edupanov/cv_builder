@@ -21,7 +21,6 @@ function App({history}: AppHistory) {
                     <Routes/>
                 </div>
             </MuiPickersUtilsProvider>
-
         </ConnectedRouter>
     );
 }
