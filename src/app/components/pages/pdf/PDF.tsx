@@ -6,7 +6,6 @@ import {styles} from "./style/pdfStyle";
 
 const Pdf = () => {
     let state = useTypeSelector(state => state.resume.data)
-    console.log(state)
     return (
         <PDFViewer style={{width: '100%', height: '100vh'}}>
             <Document>
