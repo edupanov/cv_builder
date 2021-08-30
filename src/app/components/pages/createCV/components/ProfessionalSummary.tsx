@@ -1,27 +1,29 @@
-import React, {ChangeEvent, useState} from 'react';
-import {Button, FormControl, FormGroup, TextField} from "@material-ui/core";
+import React, {ChangeEvent, useEffect, useState} from 'react';
+import {FormControl, FormGroup, TextField} from "@material-ui/core";
 import {ProfessionalSummaryInterface} from "../types/cvInterface";
-import {useActions} from "../../../../store/hooks/useActions";
-import SaveButton from "../../../../shared/components/SaveButton";
+import {resumeInfoPropsType} from "./Tabs";
 
-const ProfessionalSummary = () => {
-    const {saveCv} = useActions()
-    const [professionalSummary, setProfessionalSummary] = useState({} as ProfessionalSummaryInterface)
+
+const ProfessionalSummary = (props: resumeInfoPropsType) => {
+    const {resume, setResume} = props
+    const [professionalSummary, setProfessionalSummary] = useState({info: 'Experienced PMP with a background in law and 7+ years experience growing revenue for a Massachusetts-based electronics firm. Seeking to leverage leadership expertise as project manager for Paylocity. Guest speaker at the Northeast Lean Conference in 2014.'} as ProfessionalSummaryInterface)
     const handleChangeInfo = (event: ChangeEvent<HTMLInputElement>) => {
         const {name, value} = event.target
         setProfessionalSummary({...professionalSummary, [name]: value})
     }
-    const saveInfo = () => {
-        saveCv({professionalSummary})
-    }
+
+    useEffect(() => {
+        setResume({...resume, professionalSummary})
+    }, [professionalSummary])
+
     return (
-        <div>
+        <div className={'professionalSummary'}>
             <h2 className='title'>Professional Summary</h2>
             <form>
-                <FormControl>
+                <FormControl className='textArea'>
                     <FormGroup>
                         <TextField
-                            className='textArea'
+
                             name={'info'}
                             id="standard-multiline-static"
                             label="Include 2-3 clear sentences about your overall experience"
@@ -33,7 +35,6 @@ const ProfessionalSummary = () => {
                     </FormGroup>
                 </FormControl>
             </form>
-            <SaveButton />
         </div>
     );
 };

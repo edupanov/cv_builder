@@ -97,14 +97,22 @@ export const StyledCreateCv = styled.div`
         margin-top: 15px;
         font-family: sans-serif;
       }
-.infoWrapper{
-  display: flex;
-  justify-content: space-around;
-}
+      .infoWrapper {
+        display: flex;
+        justify-content: space-around;
+      }
+
       .dataPicker {
         width: 250px;
         color: red;
       }
+    }
+  }
+
+  .professionalSummary {
+    
+    textarea {
+      width: 100%;
     }
   }
 

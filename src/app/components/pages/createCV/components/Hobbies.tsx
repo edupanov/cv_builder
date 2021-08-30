@@ -1,8 +1,8 @@
 import React from 'react';
 import {FormControl, FormGroup, TextField} from "@material-ui/core";
-import SaveButton from "../../../../shared/components/SaveButton";
+import {resumeInfoPropsType} from "./Tabs";
 
-const Hobbies = () => {
+const Hobbies = (props: resumeInfoPropsType) => {
     return (
         <div>
             <h2 className='title'>Hobbies</h2>
@@ -20,7 +20,6 @@ const Hobbies = () => {
                     </FormGroup>
                 </FormControl>
             </form>
-            <SaveButton />
         </div>
     );
 };

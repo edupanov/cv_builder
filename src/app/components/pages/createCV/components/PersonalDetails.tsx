@@ -1,13 +1,29 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import {FormControl, FormGroup, TextField} from "@material-ui/core";
 import {KeyboardDatePicker} from "@material-ui/pickers";
 import {formatDate} from "../../../../utils/utils";
 import {PersonalDetailsInterface} from "../types/cvInterface";
 import Logo from './Avatar';
-import SaveButton from "../../../../shared/components/SaveButton";
+import {resumeInfoPropsType} from "./Tabs";
 
-const PersonalDetails = () => {
-    const [personalDetails, setPersonalDetails] = useState({} as PersonalDetailsInterface)
+const PersonalDetails = (props: resumeInfoPropsType) => {
+
+    const {resume, setResume} = props
+    const [personalDetails, setPersonalDetails] = useState({
+        wantedJobTitle: 'Creative Director',
+        firstName: 'Bobby',
+        lastName: 'Abrams',
+        birthDay: '15.04.1986',
+        phone: '+375296410745',
+        email: 'bobby@mail.com',
+        country: 'USA',
+        city: 'Chicago',
+        address: 'Chicago str, 9',
+        postalCode: '123456',
+        logo: {name: '',
+            imgPath: '',
+            img: ''}
+    } as PersonalDetailsInterface)
 
     const [selectedDate, setSelectedDate] = React.useState<Date | null>(
         new Date(''),
@@ -16,13 +32,15 @@ const PersonalDetails = () => {
         const {name, value} = event.target
         setPersonalDetails({...personalDetails, [name]: value})
     }
-
     const handleDateChange = (date: Date | null) => {
         setSelectedDate(date);
         setPersonalDetails({
             ...personalDetails, birthDay: formatDate(selectedDate, 'DD.MM.yyyy')
         })
     };
+    useEffect(() => {
+       setResume({...resume, personalDetails})
+    }, [personalDetails])
 
     return (
         <div>
@@ -148,7 +166,6 @@ const PersonalDetails = () => {
                     </FormControl>
                 </form>
             </div>
-            <SaveButton personalDetails={personalDetails}/>
         </div>
 
     );

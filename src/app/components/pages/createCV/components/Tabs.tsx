@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Dispatch, useState} from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -11,11 +11,18 @@ import Education from "./Education";
 import WebsitesSocialLinks from "./WebsitesSocialLinks";
 import Skills from "./Skills";
 import Hobbies from "./Hobbies";
+import {CvInterface} from "../types/cvInterface";
+import SaveButton from "../../../../shared/components/SaveButton";
 
 interface TabPanelProps {
     children?: React.ReactNode;
     index: any;
     value: any;
+}
+
+export type resumeInfoPropsType = {
+    resume: CvInterface
+    setResume: Dispatch<React.SetStateAction<CvInterface>>
 }
 
 function TabPanel(props: TabPanelProps) {
@@ -61,7 +68,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export default function VerticalTabs() {
     const classes = useStyles();
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = useState(0);
+    const [resume, setResume] = useState({} as CvInterface)
 
     const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
         setValue(newValue);
@@ -86,25 +94,32 @@ export default function VerticalTabs() {
                 <Tab label="Hobbies" {...a11yProps(6)} />
             </Tabs>
             <TabPanel value={value} index={0}>
-                <PersonalDetails/>
+                <PersonalDetails resume={resume} setResume={setResume}/>
+                <SaveButton resume={resume}/>
             </TabPanel>
             <TabPanel value={value} index={1}>
-                <ProfessionalSummary/>
+                <ProfessionalSummary resume={resume} setResume={setResume}/>
+                <SaveButton resume={resume}/>
             </TabPanel>
             <TabPanel value={value} index={2}>
-                <EmploymentHistory/>
+                <EmploymentHistory resume={resume} setResume={setResume}/>
+                <SaveButton resume={resume}/>
             </TabPanel>
             <TabPanel value={value} index={3}>
-                <Education/>
+                <Education resume={resume} setResume={setResume}/>
+                <SaveButton resume={resume}/>
             </TabPanel>
             <TabPanel value={value} index={4}>
-                <WebsitesSocialLinks/>
+                <WebsitesSocialLinks resume={resume} setResume={setResume}/>
+                <SaveButton resume={resume}/>
             </TabPanel>
             <TabPanel value={value} index={5}>
-                <Skills/>
+                <Skills resume={resume} setResume={setResume}/>
+                <SaveButton resume={resume}/>
             </TabPanel>
             <TabPanel value={value} index={6}>
-                <Hobbies/>
+                <Hobbies resume={resume} setResume={setResume}/>
+                <SaveButton resume={resume}/>
             </TabPanel>
         </div>
     );

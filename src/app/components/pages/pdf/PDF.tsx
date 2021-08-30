@@ -2,6 +2,7 @@ import React from 'react';
 import {Document, Image, Page, PDFViewer, Text, View} from '@react-pdf/renderer';
 import {useTypeSelector} from "../../../store/hooks/useTypeSelector";
 import {styles} from "./style/pdfStyle";
+import ProfessionalSummary from "../createCV/components/ProfessionalSummary";
 
 
 const Pdf = () => {
@@ -12,7 +13,7 @@ const Pdf = () => {
                 <Page size="A4" style={styles.page}>
                     <div style={styles.container}>
                         <View style={styles.personalDetails}>
-                            <div>
+                            <div style={styles.leftPanel}>
                                 {!state ? null :
                                     <Image style={styles.logo} src={`${state.personalDetails.logo.imgPath}`}/>
                                 }
@@ -25,11 +26,13 @@ const Pdf = () => {
                                 </div>
                             </div>
 
-                            <div>
+                            <div style={styles.rightPanel}>
                                 <Text
                                     style={styles.name}>{!state ? '' : `${state.personalDetails.firstName} ${state.personalDetails.lastName}`}</Text>
                                 <Text
                                     style={styles.jobTitle}>{!state ? '' : state.personalDetails.wantedJobTitle}</Text>
+                                <Text style={styles.professionalSummaryTitle}>Professional Summary:</Text>
+                                <Text style={styles.professionalSummaryText}>{!state ? '' : state.professionalSummary.info}</Text>
                             </div>
                         </View>
                     </div>

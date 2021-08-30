@@ -1,8 +1,8 @@
 import React from 'react';
 import {FormControl, FormGroup} from "@material-ui/core";
-import SaveButton from "../../../../shared/components/SaveButton";
+import {resumeInfoPropsType} from "./Tabs";
 
-const WebsitesSocialLinks = () => {
+const WebsitesSocialLinks = (props: resumeInfoPropsType) => {
     return (
         <div>
             <h2 className='title'>Websites & Social Links</h2>
@@ -13,7 +13,6 @@ const WebsitesSocialLinks = () => {
                     </FormGroup>
                 </FormControl>
             </form>
-            <SaveButton />
         </div>
     );
 };

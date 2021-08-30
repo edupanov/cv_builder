@@ -22,8 +22,15 @@ export interface ProfessionalSummaryInterface {
     info: string
 }
 
+export interface EmploymentHistoryInterface {
+    dateFrom: string
+    dateTo: string
+    info: string
+}
+
 export interface CvInterface {
     personalDetails?: PersonalDetailsInterface
     professionalSummary?: ProfessionalSummaryInterface
+    employmentHistory?: Array<EmploymentHistoryInterface>
 
 }

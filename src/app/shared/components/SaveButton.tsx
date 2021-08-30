@@ -1,24 +1,23 @@
 import React from 'react';
 import {Button} from "@material-ui/core";
 import {useActions} from "../../store/hooks/useActions";
-import {PersonalDetailsInterface} from "../../components/pages/createCV/types/cvInterface";
+import {CvInterface} from "../../components/pages/createCV/types/cvInterface";
 import {useAlert} from "react-alert";
 
 type SaveButtonPropsType = {
-    personalDetails?: PersonalDetailsInterface
+    resume: CvInterface
 }
 
 const SaveButton = (props: SaveButtonPropsType) => {
-    const {personalDetails} = props
+    const {resume} = props
     const alert = useAlert()
     const {saveCv} = useActions()
 
     const saveInfo = () => {
-        // @ts-ignore
-        if(!personalDetails.logo) {
-            return alert.show('Oooops!')
+        if(!resume.personalDetails!.logo) {
+           return  alert.show('Add logo!')
         }
-        saveCv({personalDetails})
+        saveCv(resume)
         alert.show('Saved Success!')
     }
     return (

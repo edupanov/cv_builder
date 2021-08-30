@@ -20,8 +20,12 @@ export const styles = StyleSheet.create({
         justifyContent: 'center'
 
     },
+    leftPanel:{
+        width: 200
+    },
+
     logo: {
-        width: 150,
+        width: 200,
         left: 0
     },
     contactWrapper: {
@@ -34,14 +38,29 @@ export const styles = StyleSheet.create({
         fontSize: 10,
         paddingBottom: 7
     },
+    rightPanel:{
+        borderLeft: '1px solid black',
+        marginLeft: 10,
+        height: '98vh'
+    },
     name: {
         fontSize: 24,
-        paddingBottom: 10
+        paddingBottom: 10,
+        marginLeft: 100
 
     },
     jobTitle: {
         fontSize: 16,
-
+        marginLeft: 100
+    },
+    professionalSummaryTitle: {
+        margin: '10px 0 0 20px',
+        fontSize: 14
+    },
+    professionalSummaryText: {
+        margin: '7px 0 0 20px',
+        width: 320,
+        fontSize: 12
     }
 
 });

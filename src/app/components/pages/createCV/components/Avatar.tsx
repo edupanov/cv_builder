@@ -4,6 +4,7 @@ import Avatar from '@material-ui/core/Avatar'
 import AvatarEditor from "react-avatar-editor";
 import {Box, Slider} from "@material-ui/core";
 import {PersonalDetailsInterface} from "../types/cvInterface";
+import {useActions} from "../../../../store/hooks/useActions";
 
 type LogoPropsType = {
     personalDetails: PersonalDetailsInterface
@@ -11,6 +12,7 @@ type LogoPropsType = {
 }
 
 const Logo = (props: LogoPropsType) => {
+    const {saveCv} = useActions()
 
     const {personalDetails, setPersonalDetails} = props
     const [avatar, setAvatar] = useState<string>('')
