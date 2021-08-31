@@ -1,6 +1,7 @@
-import React, {ChangeEvent, SyntheticEvent} from 'react';
+import React, {ChangeEvent} from 'react';
 import {Checkbox, FormControl, Input, InputLabel, ListItemText, MenuItem, Select} from "@material-ui/core";
-import SaveButton from "../../../../shared/components/SaveButton";
+import {resumeInfoPropsType} from "./Tabs";
+
 const skills = [
     'CSS',
     'HTML',
@@ -14,7 +15,7 @@ const skills = [
     'Vue',
     'NodeJS',
 ];
-const Skills = () => {
+const Skills = (props: resumeInfoPropsType) => {
 
     const [userSkill, setUserSkill] = React.useState<string[]>([]);
     const handleChange = (event: ChangeEvent<{ value: unknown }>) => {
@@ -44,7 +45,6 @@ const Skills = () => {
                     ))}
                 </Select>
             </FormControl>
-            <SaveButton />
         </div>
     );
 };

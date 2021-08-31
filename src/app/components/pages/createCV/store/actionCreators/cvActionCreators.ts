@@ -6,4 +6,5 @@ import {RootState} from "../../../../../store/rootReducer";
 export const saveCv = (cv: CvInterface) =>
     (dispatch: Dispatch<cvActionType>, getState: () => RootState) => {
         dispatch({type: CvActionTypes.SAVE_CV, payload: cv})
+
     }

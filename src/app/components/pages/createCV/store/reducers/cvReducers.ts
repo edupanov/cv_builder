@@ -7,7 +7,7 @@ const initialState: CvStateInterface = {
 export const cvReducer = (state: CvStateInterface = initialState, action: cvActionType): CvStateInterface => {
     switch (action.type) {
         case CvActionTypes.SAVE_CV:
-            return {...state, data: {...action.payload, ...state.data}}
+            return {...state, data: {...action.payload}}
         default:
             return state
     }
