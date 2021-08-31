@@ -22,15 +22,29 @@ export interface ProfessionalSummaryInterface {
     info: string
 }
 
-export interface EmploymentHistoryInterface {
+export interface WorkExperienceInterface {
     dateFrom: string
     dateTo: string
-    info: string
+    company: string
+    position: string
+    description: string
+}
+export interface EducationInterface {
+    dateFrom: string
+    dateTo: string
+    institution: string
+    degree: string
+}
+export interface WebContactsInterface {
+    link: string
 }
 
 export interface CvInterface {
     personalDetails?: PersonalDetailsInterface
     professionalSummary?: ProfessionalSummaryInterface
-    employmentHistory?: Array<EmploymentHistoryInterface>
+    workExperience?: Array<WorkExperienceInterface>
+    education?: Array<EducationInterface>
+    webContacts?: Array<WebContactsInterface>
+    skills?: Array<string>
 
 }

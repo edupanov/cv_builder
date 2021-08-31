@@ -23,7 +23,6 @@ const ProfessionalSummary = (props: resumeInfoPropsType) => {
                 <FormControl className='textArea'>
                     <FormGroup>
                         <TextField
-
                             name={'info'}
                             id="standard-multiline-static"
                             label="Include 2-3 clear sentences about your overall experience"

@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import PersonalDetails from "./PersonalDetails";
 import ProfessionalSummary from "./ProfessionalSummary";
-import EmploymentHistory from "./EmploymentHistory";
+import WorkExperience from "./WorkExperience";
 import Education from "./Education";
 import WebsitesSocialLinks from "./WebsitesSocialLinks";
 import Skills from "./Skills";
@@ -87,7 +87,7 @@ export default function VerticalTabs() {
             >
                 <Tab label="Personal Details" {...a11yProps(0)} />
                 <Tab label="Professional Summary" {...a11yProps(1)} />
-                <Tab label="Employment History" {...a11yProps(2)} />
+                <Tab label="Work Experience" {...a11yProps(2)} />
                 <Tab label="Education" {...a11yProps(3)} />
                 <Tab label="Websites & Social Links" {...a11yProps(4)} />
                 <Tab label="Skills" {...a11yProps(5)} />
@@ -102,7 +102,7 @@ export default function VerticalTabs() {
                 <SaveButton resume={resume}/>
             </TabPanel>
             <TabPanel value={value} index={2}>
-                <EmploymentHistory resume={resume} setResume={setResume}/>
+                <WorkExperience resume={resume} setResume={setResume}/>
                 <SaveButton resume={resume}/>
             </TabPanel>
             <TabPanel value={value} index={3}>

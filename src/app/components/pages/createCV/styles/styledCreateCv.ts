@@ -92,11 +92,13 @@ export const StyledCreateCv = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      .infoTitle{
+
+      .infoTitle {
         font-size: 18px;
         margin-top: 15px;
         font-family: sans-serif;
       }
+
       .infoWrapper {
         display: flex;
         justify-content: space-around;
@@ -110,10 +112,46 @@ export const StyledCreateCv = styled.div`
   }
 
   .professionalSummary {
-    
+
     textarea {
       width: 100%;
     }
+  }
+
+  .workExperience {
+    .inputWrapper {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+
+      .inputContainer {
+
+      }
+
+      .info {
+        position: relative;
+        bottom: 16px;
+        width: 100%;
+      }
+    }
+
+  }
+
+  .skillsWrapper {
+    .titleTechnologies {
+      padding-top: 10px;
+      font-size: 16px;
+      font-family: sans-serif;
+      text-align: center;
+    }
+    .other {
+      width: 100%;
+    }
+
+    .skills {
+      width: 100%;
+    }
+
   }
 
 `

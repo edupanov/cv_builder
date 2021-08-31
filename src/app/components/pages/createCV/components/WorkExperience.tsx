@@ -1,28 +1,27 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
 import {FormControl, FormGroup, IconButton, TextField} from "@material-ui/core";
 import {resumeInfoPropsType} from "./Tabs";
-import {EducationInterface} from "../types/cvInterface";
-import AddIcon from "@material-ui/icons/Add";
+import AddIcon from '@material-ui/icons/Add';
+import {WorkExperienceInterface} from "../types/cvInterface";
 
-const Education = (props: resumeInfoPropsType) => {
+const WorkExperience = (props: resumeInfoPropsType) => {
 
     const {resume, setResume} = props
-
-    const [education, setEducation] = useState({} as EducationInterface)
-    const [arrayEducation, setArrayEducation] = useState<Array<EducationInterface>>([{
-        dateFrom: '01.01.1000',
-        dateTo: '01.01.1004',
-        institution: 'Peshernaya skola № 1',
-        degree: 'Zolotaya dubina',
+    const [workExperience, setWorkExperience] = useState({} as WorkExperienceInterface)
+    const [arrayWorkExperience, setArrayWorkExperience] = useState<Array<WorkExperienceInterface>>([{
+        dateFrom: '01.01.0001',
+        dateTo: '01.01.0005',
+        company: 'OOO Roga and Copita',
+        position: 'Dobitchik',
+        description: 'Dobival roga and copita'
     }])
     let [newElement, setNewElement] = useState<Array<JSX.Element>>([<div key={0}/>])
-    let newObj = {} as EducationInterface
-
+    let newObj = {} as WorkExperienceInterface
     const handleChangeInfo = (event: ChangeEvent<HTMLInputElement>) => {
         const {name, value} = event.target
         newObj = {...newObj, [name]: value}
-        setEducation(newObj)
-        setArrayEducation([...arrayEducation, newObj])
+        setWorkExperience(newObj)
+        setArrayWorkExperience([...arrayWorkExperience, newObj])
     }
 
     const onClickHAndler = () => {
@@ -44,15 +43,22 @@ const Education = (props: resumeInfoPropsType) => {
                 </div>
                 <TextField
                     className={'info'}
-                    label="Educational Institution"
-                    name={"institution"}
+                    label="Company"
+                    name={"company"}
                     type="search"
                     onChange={handleChangeInfo}
                 />
                 <TextField
                     className={'info'}
-                    label="Academic Degree"
-                    name={"degree"}
+                    label="Position"
+                    name={"position"}
+                    type="search"
+                    onChange={handleChangeInfo}
+                />
+                <TextField
+                    className={'info'}
+                    label="Description"
+                    name={"info"}
                     type="search"
                     onChange={handleChangeInfo}
                 />
@@ -61,12 +67,12 @@ const Education = (props: resumeInfoPropsType) => {
     }
 
     useEffect(() => {
-        setResume({...resume, education: arrayEducation})
-    }, [education])
+        setResume({...resume, workExperience: arrayWorkExperience})
+    }, [workExperience])
 
     return (
         <div className={'workExperience'}>
-            <h2 className='title'>Education</h2>
+            <h2 className='title'>Work Experience</h2>
             <IconButton onClick={onClickHAndler}><AddIcon/></IconButton>
             <form>
                 <FormControl className={'inputWrapper'}>
@@ -77,7 +83,6 @@ const Education = (props: resumeInfoPropsType) => {
             </form>
         </div>
     );
-
 };
 
-export default Education;
+export default WorkExperience;

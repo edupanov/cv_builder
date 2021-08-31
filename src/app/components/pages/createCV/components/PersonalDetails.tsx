@@ -14,7 +14,7 @@ const PersonalDetails = (props: resumeInfoPropsType) => {
         firstName: 'Bobby',
         lastName: 'Abrams',
         birthDay: '15.04.1986',
-        phone: '+375296410745',
+        phone: '+375296402537',
         email: 'bobby@mail.com',
         country: 'USA',
         city: 'Chicago',
@@ -38,6 +38,7 @@ const PersonalDetails = (props: resumeInfoPropsType) => {
             ...personalDetails, birthDay: formatDate(selectedDate, 'DD.MM.yyyy')
         })
     };
+
     useEffect(() => {
        setResume({...resume, personalDetails})
     }, [personalDetails])

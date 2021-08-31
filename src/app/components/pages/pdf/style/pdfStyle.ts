@@ -61,6 +61,20 @@ export const styles = StyleSheet.create({
         margin: '7px 0 0 20px',
         width: 320,
         fontSize: 12
+    },
+
+    workExperienceText:{
+        marginLeft: 20,
+        width: 320,
+        fontSize: 12
+    },
+
+    webTitle: {
+        margin: '10px 0 5px',
+        fontSize: 16
+    },
+    webLink: {
+        fontSize: 12
     }
 
 });
