@@ -8,7 +8,7 @@ const WebsitesSocialLinks = (props: resumeInfoPropsType) => {
     const {resume, setResume} = props
     const [webContacts, setWebContacts] = useState({} as WebContactsInterface)
     const [arrayWebContacts, setArrayWebContacts] = useState<Array<WebContactsInterface>>([{
-        link: 'https://www.facebook.com/'
+        link: 'https://www.britannica.com/topic/Neanderthal'
     }])
     let [newElement, setNewElement] = useState<Array<JSX.Element>>([<div key={0}/>])
     let newObj = {} as WebContactsInterface

@@ -21,7 +21,7 @@ const PersonalDetails = (props: resumeInfoPropsType) => {
         address: 'Chicago str, 9',
         postalCode: '123456',
         logo: {name: '',
-            imgPath: '',
+            imgPath: 'https://cdn.arstechnica.net/wp-content/uploads/2016/02/A4HHo5R-640x537.jpg',
             img: ''}
     } as PersonalDetailsInterface)
 

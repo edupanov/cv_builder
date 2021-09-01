@@ -18,9 +18,8 @@ export const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center'
-
     },
-    leftPanel:{
+    leftPanel: {
         width: 200
     },
 
@@ -31,14 +30,14 @@ export const styles = StyleSheet.create({
     contactWrapper: {
         top: 10,
     },
-    contactTitle:{
+    contactTitle: {
         paddingBottom: 7
     },
     contactInfo: {
         fontSize: 10,
         paddingBottom: 7
     },
-    rightPanel:{
+    rightPanel: {
         borderLeft: '1px solid black',
         marginLeft: 10,
         height: '98vh'
@@ -51,11 +50,12 @@ export const styles = StyleSheet.create({
     },
     jobTitle: {
         fontSize: 16,
-        marginLeft: 100
+        marginLeft: 100,
     },
     professionalSummaryTitle: {
         margin: '10px 0 0 20px',
-        fontSize: 14
+        fontSize: 14,
+        borderBottom: '1px solid black'
     },
     professionalSummaryText: {
         margin: '7px 0 0 20px',
@@ -63,10 +63,16 @@ export const styles = StyleSheet.create({
         fontSize: 12
     },
 
-    workExperienceText:{
+    workExperienceText: {
         marginLeft: 20,
         width: 320,
         fontSize: 12
+    },
+
+    workExperiencePeriod: {
+        margin: '10px 0 3px 20px',
+        fontSize: 14,
+        fontWeight: 'bold',
     },
 
     webTitle: {

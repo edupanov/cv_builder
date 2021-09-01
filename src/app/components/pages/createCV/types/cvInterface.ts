@@ -15,7 +15,7 @@ export interface PersonalDetailsInterface {
     email: string
     phone: string
     postalCode: string
-    logo: LogoInterface
+    logo?: LogoInterface
 }
 
 export interface ProfessionalSummaryInterface {
@@ -39,12 +39,28 @@ export interface WebContactsInterface {
     link: string
 }
 
+export interface SkillsInterface {
+    webTechnologies?: string
+    stateManagement?: string
+    programmingLanguages?: string
+    dbms?: string
+    testing?: string
+    ide?: string
+    vcs?: string
+    frameworks?: string
+    other?: string
+}
+export interface HobbiesInterface {
+    info: string
+}
+
 export interface CvInterface {
     personalDetails?: PersonalDetailsInterface
     professionalSummary?: ProfessionalSummaryInterface
     workExperience?: Array<WorkExperienceInterface>
     education?: Array<EducationInterface>
     webContacts?: Array<WebContactsInterface>
-    skills?: Array<string>
+    skills?: SkillsInterface
+    hobbies?: HobbiesInterface
 
 }

@@ -66,7 +66,7 @@ export const StyledCreateCv = styled.div`
               height: 200px;
               padding: 10px;
               margin-bottom: 10px;
-              border-radius: 0px;
+              border-radius: 0;
             }
           }
         ;
@@ -112,7 +112,6 @@ export const StyledCreateCv = styled.div`
   }
 
   .professionalSummary {
-
     textarea {
       width: 100%;
     }
@@ -124,17 +123,12 @@ export const StyledCreateCv = styled.div`
       justify-content: center;
       width: 100%;
 
-      .inputContainer {
-
-      }
-
       .info {
         position: relative;
         bottom: 16px;
         width: 100%;
       }
     }
-
   }
 
   .skillsWrapper {
@@ -144,6 +138,7 @@ export const StyledCreateCv = styled.div`
       font-family: sans-serif;
       text-align: center;
     }
+
     .other {
       width: 100%;
     }

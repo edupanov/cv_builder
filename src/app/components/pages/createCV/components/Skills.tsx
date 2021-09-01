@@ -16,10 +16,6 @@ import {
 const Skills = (props: resumeInfoPropsType) => {
     const {resume, setResume} = props
 
-    const [saveSkills, setSaveSkills] = useState<Array<string>>([])
-    const [otherSkills, setOtherSkills] = useState('');
-
-    const [userSkill, setUserSkill] = useState<Array<string>>([]);
     const [stateManagement, setStateManagement] = useState<Array<string>>([]);
     const [webTechnologies, setWebTechnologies] = useState<Array<string>>([]);
     const [programmingLanguages, setProgrammingLanguages] = useState<Array<string>>([]);
@@ -28,6 +24,8 @@ const Skills = (props: resumeInfoPropsType) => {
     const [ide, setIde] = useState<Array<string>>([]);
     const [vcs, setVcs] = useState<Array<string>>([]);
     const [frameworks, setFrameworks] = useState<Array<string>>([]);
+    const [otherSkills, setOtherSkills] = useState('');
+
 
     const handleChangeWebTechnologies = (event: ChangeEvent<{ value: unknown }>) => {
         // @ts-ignore
@@ -45,37 +43,42 @@ const Skills = (props: resumeInfoPropsType) => {
         // @ts-ignore
         setDbms(event.target.value);
     };
-    const handleTesting = (event: ChangeEvent<{ value: unknown }>) => {
+    const handleChangeTesting = (event: ChangeEvent<{ value: unknown }>) => {
         // @ts-ignore
         setTesting(event.target.value);
     };
-    const handleIde = (event: ChangeEvent<{ value: unknown }>) => {
+    const handleChangeIde = (event: ChangeEvent<{ value: unknown }>) => {
         // @ts-ignore
         setIde(event.target.value);
     };
-    const handleVcs = (event: ChangeEvent<{ value: unknown }>) => {
+    const handleChangeVcs = (event: ChangeEvent<{ value: unknown }>) => {
         // @ts-ignore
         setVcs(event.target.value);
     };
-    const handleFrameworks = (event: ChangeEvent<{ value: unknown }>) => {
+    const handleChangeFrameworks = (event: ChangeEvent<{ value: unknown }>) => {
         // @ts-ignore
         setFrameworks(event.target.value);
     };
-
-    const handleChangeInfo = (event: ChangeEvent<HTMLInputElement>) => {
+    const handleChangeOther = (event: ChangeEvent<HTMLInputElement>) => {
         const {value} = event.target
         setOtherSkills(value)
     }
 
+    const userSkills = {
+        webTechnologies: webTechnologies.join(', '),
+        stateManagement: stateManagement.join(', '),
+        programmingLanguages: programmingLanguages.join(', '),
+        dbms: dbms.join(', '),
+        testing: testing.join(', '),
+        ide: ide.join(', '),
+        vcs: vcs.join(', '),
+        frameworks: frameworks.join(', '),
+        other: otherSkills,
+    }
+
     useEffect(() => {
-
-        setSaveSkills([...userSkill, otherSkills])
-    }, [userSkill, otherSkills])
-
-
-    useEffect(() => {
-        setResume({...resume, skills: saveSkills})
-    }, [saveSkills])
+        setResume({...resume, skills: userSkills})
+    }, [stateManagement, webTechnologies, programmingLanguages, dbms, testing, ide, vcs, frameworks, otherSkills])
 
     return (
         <div className={'skillsWrapper'}>
@@ -95,7 +98,7 @@ const Skills = (props: resumeInfoPropsType) => {
                     >
                         {webTechnologiesList.map((el: any) => (
                             <MenuItem key={el} value={el}>
-                                <Checkbox checked={userSkill.indexOf(el) > -1}/>
+                                <Checkbox checked={webTechnologies.indexOf(el) > -1}/>
                                 <ListItemText primary={el}/>
                             </MenuItem>
                         ))}
@@ -139,7 +142,7 @@ const Skills = (props: resumeInfoPropsType) => {
                     >
                         {programmingLanguagesList.map((el: any) => (
                             <MenuItem key={el} value={el}>
-                                <Checkbox checked={userSkill.indexOf(el) > -1}/>
+                                <Checkbox checked={programmingLanguages.indexOf(el) > -1}/>
                                 <ListItemText primary={el}/>
                             </MenuItem>
                         ))}
@@ -161,7 +164,7 @@ const Skills = (props: resumeInfoPropsType) => {
                     >
                         {dbmsList.map((el: any) => (
                             <MenuItem key={el} value={el}>
-                                <Checkbox checked={userSkill.indexOf(el) > -1}/>
+                                <Checkbox checked={dbms.indexOf(el) > -1}/>
                                 <ListItemText primary={el}/>
                             </MenuItem>
                         ))}
@@ -177,13 +180,13 @@ const Skills = (props: resumeInfoPropsType) => {
                         id="demo-mutiple-checkbox"
                         multiple
                         value={testing}
-                        onChange={handleTesting}
+                        onChange={handleChangeTesting}
                         input={<Input/>}
                         renderValue={(selected) => (selected as string[]).join(', ')}
                     >
                         {testingList.map((el: any) => (
                             <MenuItem key={el} value={el}>
-                                <Checkbox checked={userSkill.indexOf(el) > -1}/>
+                                <Checkbox checked={testing.indexOf(el) > -1}/>
                                 <ListItemText primary={el}/>
                             </MenuItem>
                         ))}
@@ -199,13 +202,13 @@ const Skills = (props: resumeInfoPropsType) => {
                         id="demo-mutiple-checkbox"
                         multiple
                         value={ide}
-                        onChange={handleIde}
+                        onChange={handleChangeIde}
                         input={<Input/>}
                         renderValue={(selected) => (selected as string[]).join(', ')}
                     >
                         {ideList.map((el: any) => (
                             <MenuItem key={el} value={el}>
-                                <Checkbox checked={userSkill.indexOf(el) > -1}/>
+                                <Checkbox checked={ide.indexOf(el) > -1}/>
                                 <ListItemText primary={el}/>
                             </MenuItem>
                         ))}
@@ -221,13 +224,13 @@ const Skills = (props: resumeInfoPropsType) => {
                         id="demo-mutiple-checkbox"
                         multiple
                         value={vcs}
-                        onChange={handleVcs}
+                        onChange={handleChangeVcs}
                         input={<Input/>}
                         renderValue={(selected) => (selected as string[]).join(', ')}
                     >
                         {vcsList.map((el: any) => (
                             <MenuItem key={el} value={el}>
-                                <Checkbox checked={userSkill.indexOf(el) > -1}/>
+                                <Checkbox checked={vcs.indexOf(el) > -1}/>
                                 <ListItemText primary={el}/>
                             </MenuItem>
                         ))}
@@ -243,13 +246,13 @@ const Skills = (props: resumeInfoPropsType) => {
                         id="demo-mutiple-checkbox"
                         multiple
                         value={frameworks}
-                        onChange={handleFrameworks}
+                        onChange={handleChangeFrameworks}
                         input={<Input/>}
                         renderValue={(selected) => (selected as string[]).join(', ')}
                     >
                         {frameworksList.map((el: any) => (
                             <MenuItem key={el} value={el}>
-                                <Checkbox checked={userSkill.indexOf(el) > -1}/>
+                                <Checkbox checked={frameworks.indexOf(el) > -1}/>
                                 <ListItemText primary={el}/>
                             </MenuItem>
                         ))}
@@ -262,7 +265,7 @@ const Skills = (props: resumeInfoPropsType) => {
                     label="Other Technologies"
                     name={"skill"}
                     type="search"
-                    onChange={handleChangeInfo}
+                    onChange={handleChangeOther}
                 />
             </div>
 

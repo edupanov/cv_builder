@@ -6,7 +6,7 @@ import {resumeInfoPropsType} from "./Tabs";
 
 const ProfessionalSummary = (props: resumeInfoPropsType) => {
     const {resume, setResume} = props
-    const [professionalSummary, setProfessionalSummary] = useState({info: 'Experienced PMP with a background in law and 7+ years experience growing revenue for a Massachusetts-based electronics firm. Seeking to leverage leadership expertise as project manager for Paylocity. Guest speaker at the Northeast Lean Conference in 2014.'} as ProfessionalSummaryInterface)
+    const [professionalSummary, setProfessionalSummary] = useState({info: 'Despite the apparent 150 thousand year stagnation in Neanderthal lithic innovation, there is evidence that Neanderthal technology was more sophisticated than was previously thought. However, the high frequency of potentially debilitating injuries could have prevented very complex technologies from emerging, as a major injury would have impeded an expert\'s ability to effectively teach a novice.'} as ProfessionalSummaryInterface)
     const handleChangeInfo = (event: ChangeEvent<HTMLInputElement>) => {
         const {name, value} = event.target
         setProfessionalSummary({...professionalSummary, [name]: value})
@@ -23,7 +23,7 @@ const ProfessionalSummary = (props: resumeInfoPropsType) => {
                 <FormControl className='textArea'>
                     <FormGroup>
                         <TextField
-                            name={'info'}
+                            name={'professionalSummary'}
                             id="standard-multiline-static"
                             label="Include 2-3 clear sentences about your overall experience"
                             multiline

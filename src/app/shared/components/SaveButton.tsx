@@ -14,16 +14,10 @@ const SaveButton = (props: SaveButtonPropsType) => {
     const {saveCv} = useActions()
 
     const saveInfo = () => {
-        if(!resume.personalDetails!.logo) {
-           return  alert.show('Add logo!')
-        }
         saveCv(resume)
         alert.show('Saved Success!')
     }
-    return (
-
-        <Button className={'saveButton'} onClick={saveInfo}>save</Button>
-    );
+    return <Button className={'saveButton'} onClick={saveInfo}>save</Button>;
 };
 
 export default SaveButton;
