@@ -11,7 +11,7 @@ const CreateCv = () => {
             <VerticalTabs/>
             <Pdf/> {/*не забыть убрать*/}
             <div>
-                <NavLink to={PATH.VIEW_PDF}>
+                <NavLink to={PATH.VIEW_PDF} target="_blank" rel="noopener noreferrer">
                     View PDF
                 </NavLink>
             </div>

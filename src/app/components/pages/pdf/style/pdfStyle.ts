@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     leftPanel: {
-        width: 200
+        width: 200,
     },
 
     logo: {
@@ -40,7 +40,10 @@ export const styles = StyleSheet.create({
     rightPanel: {
         borderLeft: '1px solid black',
         marginLeft: 10,
-        height: '98vh'
+        paddingRight: 10,
+        height: '98vh',
+        backgroundColor: '#a9aaab'
+
     },
     name: {
         fontSize: 24,
