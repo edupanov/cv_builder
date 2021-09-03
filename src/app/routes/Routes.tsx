@@ -6,7 +6,7 @@ import Pdf from "../components/pages/pdf/PDF";
 
 export const PATH = {
     MAIN: '/',
-    CREATE_CV: '/create-my-cv',
+    CREATE_CV: '/create',
     VIEW_PDF: '/view-pdf'
 }
 

@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
 const Schema = require('mongoose').Schema
 
-const resumeSchema = new Schema({
-    data: {type: JSON, require: true}
-})
+const cvSchema = new Schema({
+    data: {type: String, require: true}
+}, {timestamps: true})
 
-const Resume = mongoose.model('Resume', resumeSchema)
+const Cv = mongoose.model('Cv', cvSchema)
 
-module.exports = {resumeSchema, Resume}
+module.exports = {cvSchema, Cv}

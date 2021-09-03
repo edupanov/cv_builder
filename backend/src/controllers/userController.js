@@ -1,21 +1,21 @@
-const User = require('../models/user')
-const Resume = require('../models/resume').Resume
+const Cv = require('../models/resume').Cv
 const fs = require('fs')
 const path = require('path')
 const crypto = require('crypto')
 
 module.exports = {
     saveResume: async (req, res, next) => {
-        let newResume = req.body.resume
+        let newResume = req.body
+        await Cv.create(newResume)
+            .then(resume => {
+                console.log(resume)
+                if (resume._id) {
 
-        await Resume.create(newResume)
-            .then(async resume => {
-                resume.create()
-                    .then(resume => {
-                        if (resume._id){
-                            res.status(200).json({message: 'Resume was created successfully!'})
-                        }
+                    res.status(200).json({
+                        message: 'Resume was created successfully!',
+                        resume
                     })
+                }
             })
             .catch(error => {
                 res.status(500).json({
@@ -24,5 +24,9 @@ module.exports = {
                 })
             })
 
-    }
+    },
+
+    // getResume: async (req, res, next => {
+    //
+    // })
 }

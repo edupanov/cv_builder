@@ -1,6 +1,7 @@
 const http = require('http')
 const app = require('./src/app')
-const debug = require('debug')('node-angular')
+const debug = require('debug')('node-angular');
+
 
 const normalizePort = val => {
     let port = parseInt(val, 10)
@@ -8,9 +9,11 @@ const normalizePort = val => {
     if (isNaN(port)) {
         return val
     }
+
     if (port >= 0) {
         return port
     }
+
     return undefined
 }
 
@@ -20,8 +23,7 @@ const onError = error => {
     }
 
     const address = server.address()
-
-    const bind = typeof address === 'string' ? 'pipe' + address : 'port' + port
+    const bind = typeof address === 'string' ? 'pipe ' + address : 'port ' + port
 
     switch (error.code) {
         case 'EACCES':
@@ -38,12 +40,13 @@ const onError = error => {
 }
 
 const onListening = () => {
-    const address = server.address
+    const address = server.address()
     const bind = typeof address === 'string' ? 'pipe ' + address : 'port ' + port
     debug('Listening on ' + bind)
 }
 
-const port =normalizePort(process.env.PORT || '3000')
+
+const port = normalizePort(process.env.PORT || '3000')
 app.set('port', port)
 
 const server = http.createServer(app)

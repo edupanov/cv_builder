@@ -4,4 +4,4 @@ const ResumeSchema = require('./resume')
 
 const userSchema = new Schema({
     resume: [ResumeSchema]
-})
+}, {timestamps: true})

@@ -1,4 +1,4 @@
-import React, {Dispatch, useState} from 'react';
+import React, {Dispatch, useEffect, useState} from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -13,6 +13,9 @@ import Skills from "./Skills";
 import Hobbies from "./Hobbies";
 import {CvInterface} from "../types/cvInterface";
 import SaveButton from "../../../../shared/components/SaveButton";
+import {useTypeSelector} from "../../../../store/hooks/useTypeSelector";
+import {useActions} from "../../../../store/hooks/useActions";
+import {saveCvServer} from "../store/actionCreators/cvActionCreators";
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -27,6 +30,7 @@ export type resumeInfoPropsType = {
 
 function TabPanel(props: TabPanelProps) {
     const { children, value, index, ...other } = props;
+
 
     return (
         <div
@@ -67,6 +71,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export default function VerticalTabs() {
+    const {saveCvServer} = useActions()
+
     const classes = useStyles();
     const [value, setValue] = useState(0);
     const [resume, setResume] = useState({} as CvInterface)
@@ -74,6 +80,10 @@ export default function VerticalTabs() {
     const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
         setValue(newValue);
     };
+
+    const setNewResume = () => {
+        saveCvServer(resume)
+    }
 
     return (
         <div className={classes.root}>
@@ -121,6 +131,7 @@ export default function VerticalTabs() {
                 <Hobbies resume={resume} setResume={setResume}/>
                 <SaveButton resume={resume}/>
             </TabPanel>
+            <button onClick={setNewResume}>submit</button>
         </div>
     );
 }
