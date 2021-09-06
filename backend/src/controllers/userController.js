@@ -1,34 +1,80 @@
-const Cv = require('../models/resume').Cv
-const fs = require('fs')
-const path = require('path')
-const crypto = require('crypto')
+const User = require('../models/user').User
+const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+const {validationResult} = require('express-validator')
 
 module.exports = {
-    saveResume: async (req, res, next) => {
-        let newResume = req.body
-        console.log(newResume)
+    registration: async (req, res, next) => {
+        const errors = validationResult(req)
 
-        await Cv.create(newResume)
-            .then(resume => {
-                console.log(resume)
-                if (resume._id) {
+        if (!errors.isEmpty()) {
+            return res.status(400).json({
+                message: 'Uncorrect request', errors
+            })
+        }
 
+        const {email, password, name, surname} = req.body
+
+        const candidate = await User.findOne({email})
+
+        if (candidate) {
+            return res.status(400).json({
+                message: `User with email ${email} already exist`,
+                isSuccess: false
+            })
+        }
+        const hashPassword = await bcrypt.hash(password, 8)
+        const newUser = {email, password: hashPassword, name, surname}
+
+        await User.create(newUser)
+            .then(user => {
+                if (user._id) {
                     res.status(200).json({
-                        message: 'Resume was created successfully!',
-                        resume
+                        message: 'User was created successfully!',
+                        isSuccess: true,
+                        user
                     })
                 }
             })
             .catch(error => {
                 res.status(500).json({
-                    message: 'Fetching resume failed!',
+                    message: 'Fetching user failed!',
+                    isSuccess: false,
                     error
                 })
             })
+    },
+
+    login: async (req, res, next) => {
+
+        const {email, password} = req.body
+
+        const user = await User.findOne({email})
+
+        if (!user) {
+            return res.status(404).json({
+                message: `User not found`,
+                isSuccess: false
+            })
+        }
+        const isPassValid = await bcrypt.compareSync(password, user.password)
+
+        if (!isPassValid) {
+            return res.status(400).json({
+                message: `Invalid password`,
+                isSuccess: false
+            })
+        }
+
+        const token = jwt.sign({id: user.id}, process.env.JWT_KEY, {expiresIn: '1h'})
+        return res.json({
+            token,
+            user: {
+                id: user.id,
+                email: user.email
+            }
+        })
 
     },
 
-    // getResume: async (req, res, next => {
-    //
-    // })
 }

@@ -17,4 +17,10 @@ export const StyledNavBar = styled.div`
   .authWrapper {
     display: flex;
   }
+  
+  .welcome {
+    margin-top: 5px;
+    font-size: 30px;
+    color: #deb887;
+  }
 `

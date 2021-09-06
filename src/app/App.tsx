@@ -6,7 +6,7 @@ import Routes from "./routes/Routes";
 import NavBar from "./components/navBar/NavBar";
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from "@date-io/date-fns";
-import {ru} from "date-fns/locale";
+import {enUS} from "date-fns/locale";
 
 interface AppHistory {
     history: History
@@ -15,9 +15,8 @@ interface AppHistory {
 function App({history}: AppHistory) {
     return (
         <ConnectedRouter history={history}>
-            <MuiPickersUtilsProvider utils={DateFnsUtils} locale={ru}>
+            <MuiPickersUtilsProvider utils={DateFnsUtils} locale={enUS}>
                 <div className="App">
-                    <NavBar/>
                     <Routes/>
                 </div>
             </MuiPickersUtilsProvider>
