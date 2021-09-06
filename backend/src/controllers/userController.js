@@ -6,6 +6,8 @@ const crypto = require('crypto')
 module.exports = {
     saveResume: async (req, res, next) => {
         let newResume = req.body
+        console.log(newResume)
+
         await Cv.create(newResume)
             .then(resume => {
                 console.log(resume)
