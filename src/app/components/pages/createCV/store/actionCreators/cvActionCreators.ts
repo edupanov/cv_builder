@@ -3,7 +3,7 @@ import {Dispatch} from "redux";
 import {cvActionType, CvActionTypes} from "../actionTypes/cvActiontypes";
 import {RootState} from "../../../../../store/rootReducer";
 import * as ResumeRequests from '../requests/resumeRequest'
-
+import {DefaultPagedResponse} from "../../../../../shared/types/defaultPagedResponse";
 
 export const saveCv = (cv: CvInterface) =>
     (dispatch: Dispatch<cvActionType>, getState: () => RootState) => {
@@ -14,7 +14,6 @@ export const saveCv = (cv: CvInterface) =>
 export const saveCvServer = (resume: CvInterface) =>
     async (dispatch: Dispatch<cvActionType>, getState: () => RootState) => {
 
-
         dispatch({type: CvActionTypes.SAVE_CV_SERVER})
         await ResumeRequests.setResume(resume)
             .then(async () => {
@@ -24,6 +23,26 @@ export const saveCvServer = (resume: CvInterface) =>
             .catch(error => {
                 dispatch({type: CvActionTypes.SAVE_CV_FAILURE, errors: error})
             })
-
     }
 
+export const getResume = () =>
+    async (dispatch: Dispatch<cvActionType>, getState: () => RootState) => {
+        dispatch({type: CvActionTypes.GET_CV})
+
+        await ResumeRequests.getResume()
+            .then(async (response: DefaultPagedResponse<Array<CvInterface>>) => {
+                console.log(response)
+                if (response.isSuccess) {
+                    dispatch({
+                        type: CvActionTypes.GET_CV_SUCCESS,
+                        payload: {
+                            data: response.data as Array<CvInterface>
+                        }
+                    })
+                }
+            })
+            .catch(error => {
+                dispatch({type: CvActionTypes.SAVE_CV_FAILURE, errors: error})
+            })
+
+    }

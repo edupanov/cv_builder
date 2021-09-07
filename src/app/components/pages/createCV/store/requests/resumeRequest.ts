@@ -8,3 +8,9 @@ export const setResume = async (resume: CvInterface) => {
 
     return await RequestSender.post(fullUrl, resume)
 }
+
+export const getResume = async ():Promise<any> => {
+    const fullUrl = `${ResumeUrls.BASE_URL}${ResumeUrls.GET_RESUME_URL}`
+
+    return await RequestSender.get(fullUrl)
+}

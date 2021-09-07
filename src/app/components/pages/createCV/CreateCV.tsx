@@ -1,14 +1,15 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {StyledCreateCv} from "./styles/styledCreateCv";
 import VerticalTabs from "./components/Tabs";
 import Pdf from "../pdf/PDF";
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import {PATH} from "../../../routes/Routes";
 import NavBar from "../../navBar/NavBar";
+import {useActions} from "../../../store/hooks/useActions";
 
 const CreateCv = () => {
-
-
+const {getResume} = useActions()
+    useEffect(()=> {getResume()}, [])
     return (
         <>
             <NavBar/>

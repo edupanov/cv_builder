@@ -70,6 +70,7 @@ const SignUp = (props: LoginFormType) => {
             <Grid container justifyContent="center">
                 <Grid className={styles.loginWrapper} item xs={12}>
                     <form onSubmit={formik.handleSubmit}>
+                        <h2 className={styles.title}>Registration</h2>
                         <FormControl>
                             <FormGroup>
                                 <div className={styles.inputWrapper}>

@@ -18,6 +18,7 @@ export const StyledCreateCv = styled.div`
     font-size: 20px;
     font-family: sans-serif;
     text-align: center;
+    
   }
 
   .textArea {

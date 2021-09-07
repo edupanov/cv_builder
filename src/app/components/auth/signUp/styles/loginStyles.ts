@@ -3,6 +3,14 @@ import {createStyles} from "@material-ui/core";
 
 export const useStyles = makeStyles((theme: Theme) =>
     createStyles({
+        title: {
+            marginTop: 15,
+            fontSize: 26,
+            fontFamily: 'sans-serif',
+            color: '#ead29a',
+            textAlign: 'center',
+            textShadow: '3px 3px 0 #000, -1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
+        },
         loginWrapper: {
             flexBasis: 0
         },
@@ -15,13 +23,13 @@ export const useStyles = makeStyles((theme: Theme) =>
             display: 'flex',
             justifyContent: 'space-around',
         },
-        inputWrapper :{
+        inputWrapper: {
             width: 250,
             height: 'auto',
             display: 'flex',
             flexDirection: 'column',
         },
-        errorForm : {
+        errorForm: {
             color: 'red'
         },
         okStatus: {
@@ -30,7 +38,7 @@ export const useStyles = makeStyles((theme: Theme) =>
             textAlign: 'center',
             color: 'green'
         },
-        failureStatus : {
+        failureStatus: {
             marginTop: 15,
             fontSize: 18,
             textAlign: 'center',

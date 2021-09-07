@@ -1,7 +1,7 @@
 export enum ResumeUrls {
-    BASE_URL = 'http://localhost:8080/api',
-    GET_RESUME_URL = '/resume',
-    SIGN_UP = '/resume/registration',
-    SIGN_IN = '/resume/login',
-    SAVE_RESUME_URL = '/resume/save'
+    BASE_URL = 'http://localhost:8080/api/resume',
+    GET_RESUME_URL = '',
+    SIGN_UP = '/registration',
+    SIGN_IN = '/login',
+    SAVE_RESUME_URL = '/save'
 }

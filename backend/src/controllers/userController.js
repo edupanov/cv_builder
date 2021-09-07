@@ -71,10 +71,45 @@ module.exports = {
             token,
             user: {
                 id: user.id,
-                email: user.email
+                email: user.email,
+                name: user.name,
+                surname: user.surname
             }
         })
 
     },
+
+    getResume: async (req, res, next) => {
+        const {email} = req.body
+        await User.find({email})
+            .populate(['cvs'])
+            .then(async documents => {
+                const users = documents.map(resume => {
+                    let cvs = []
+                    if (resume.cvs && resume.cvs.length > 0) {
+                        cvs = resume.cvs.map(cv => {
+                            return {
+                                resume: cv
+                            }
+                        })
+                    }
+                    return {
+                        cvs
+                    }
+                })
+                res.status(200).json({
+                    code: 200,
+                    isSuccess: true,
+                    message: 'User fetched successfully!',
+                    data: users
+                })
+            })
+            .catch(error => {
+                res.status(500).json({
+                    message: 'Fetching user failed!',
+                    error
+                })
+            })
+    }
 
 }

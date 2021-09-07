@@ -2,6 +2,7 @@ import {cvActionType, CvActionTypes, CvStateInterface} from "../actionTypes/cvAc
 
 const initialState: CvStateInterface = {
     data: null,
+    localData: null,
     errors: {},
     isLoading: false
 }
@@ -9,11 +10,36 @@ const initialState: CvStateInterface = {
 export const cvReducer = (state: CvStateInterface = initialState, action: cvActionType): CvStateInterface => {
     switch (action.type) {
         case CvActionTypes.SAVE_CV_LOCAL:
-            return {...state, data: {...action.payload}}
+            return {
+                ...state,
+                localData: {...action.payload}
+            }
+
         case CvActionTypes.SAVE_CV_SUCCESS:
-            return {...state, isLoading: false}
+            return {
+                ...state,
+                isLoading: false
+            }
+
+        case CvActionTypes.GET_CV:
+            return {
+                ...state,
+                isLoading: false
+            }
+
+        case CvActionTypes.GET_CV_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                data: action.payload.data
+            }
+
         case CvActionTypes.SAVE_CV_FAILURE:
-            return {...state, errors: {}}
+            return {
+                ...state,
+                errors: {}
+            }
+
         default:
             return state
     }
