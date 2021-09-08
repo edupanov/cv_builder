@@ -8,7 +8,7 @@ const router = express.Router()
 
 router.post('/save', ResumeController.saveResume)
 router.post('/login', UserController.login)
-router.post('', UserController.getResume)
+router.post('/get', UserController.getResume)
 router.post('/registration',
     [
         check('email', 'Uncorrect email').isEmail(),

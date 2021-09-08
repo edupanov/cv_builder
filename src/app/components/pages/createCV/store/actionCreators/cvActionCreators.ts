@@ -25,13 +25,13 @@ export const saveCvServer = (resume: CvInterface) =>
             })
     }
 
-export const getResume = () =>
+export const getResume = (email: string) =>
     async (dispatch: Dispatch<cvActionType>, getState: () => RootState) => {
         dispatch({type: CvActionTypes.GET_CV})
 
-        await ResumeRequests.getResume()
+        await ResumeRequests.getResume(email)
             .then(async (response: DefaultPagedResponse<Array<CvInterface>>) => {
-                console.log(response)
+                console.log('')
                 if (response.isSuccess) {
                     dispatch({
                         type: CvActionTypes.GET_CV_SUCCESS,

@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const StyledCreateCv = styled.div`
   max-width: 1200px;
   margin: 15px auto;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
 
   .MuiTextField-root {
