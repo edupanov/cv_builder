@@ -8,7 +8,7 @@ import {formatDate} from "../../../utils/utils";
 
 const Pdf = () => {
 
-    let state = useTypeSelector(state => state.resume.data)
+    let state = useTypeSelector(state => state.resume.localData)
 
     return (
         <PDFViewer style={{width: '100%', height: '100vh'}}>

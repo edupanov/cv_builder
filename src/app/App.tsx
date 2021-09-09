@@ -3,8 +3,7 @@ import './App.css';
 import {History} from 'history'
 import {ConnectedRouter} from "connected-react-router";
 import Routes from "./routes/Routes";
-import NavBar from "./components/navBar/NavBar";
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import {MuiPickersUtilsProvider} from '@material-ui/pickers';
 import DateFnsUtils from "@date-io/date-fns";
 import {enUS} from "date-fns/locale";
 

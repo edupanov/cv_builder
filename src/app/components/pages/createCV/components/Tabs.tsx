@@ -1,5 +1,5 @@
 import React, {Dispatch, useEffect, useState} from 'react';
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import {makeStyles, Theme} from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
@@ -29,7 +29,7 @@ export type resumeInfoPropsType = {
 }
 
 function TabPanel(props: TabPanelProps) {
-    const { children, value, index, ...other } = props;
+    const {children, value, index, ...other} = props;
 
 
     return (
@@ -72,7 +72,11 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export default function VerticalTabs() {
     const {saveCvServer} = useActions()
-
+    const {user} = useTypeSelector(state => state.signUp.data)
+    if (user !== undefined) {
+        localStorage.setItem('user', JSON.stringify(user));
+    }
+    const savedUser = JSON.parse(localStorage.getItem('user') as string);
     const classes = useStyles();
     const [value, setValue] = useState(0);
     const [resume, setResume] = useState({} as CvInterface)
@@ -82,7 +86,7 @@ export default function VerticalTabs() {
     };
 
     const setNewResume = () => {
-        saveCvServer(resume)
+        saveCvServer(resume, savedUser.id)
     }
 
     return (

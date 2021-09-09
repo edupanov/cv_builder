@@ -1,13 +1,10 @@
 const Cv = require('../models/resume').Cv
-const fs = require('fs')
-const path = require('path')
-const crypto = require('crypto')
+const User = require('../models/user').User
 
 module.exports = {
     saveResume: async (req, res, next) => {
-        let newResume = req.body
-
-        await Cv.create({data: newResume})
+        const newResume = req.body.resume
+        await Cv.create({resume: newResume})
             .then(resume => {
                 if (resume._id) {
                     res.status(200).json({
@@ -25,7 +22,46 @@ module.exports = {
 
     },
 
-    // getResume: async (req, res, next => {
-    //
-    // })
+    saveUserResume: async (req, res, next) => {
+        const newResume = req.body.resume
+        const userId = req.body.userId
+        await User.findById({_id: userId})
+            .then(async user => {
+                if(user._id) {
+                     Cv.create({resume: newResume})
+                        .then(resume => {
+                            if (resume._id) {
+                                user.cvs.push(resume)
+                                user.save()
+                                    .then(user => {
+                                        if(user._id) {
+
+                                            res.status(200).json({
+                                                status: 200,
+                                                isSuccess: true,
+                                                message: 'Resume added successfully!',
+                                                user
+
+                                            })
+                                        }
+                                    })
+                            }
+                        })
+
+
+                } else {
+                    res.status(404).json({
+                        message: `User with id ${userId} not found!`
+                    })
+                }
+
+            })
+            .catch(err => {
+                res.status(500).json({
+                    message: 'Server error, please try again',
+                    err
+                })
+            })
+    },
+
 }

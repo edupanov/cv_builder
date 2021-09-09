@@ -1,20 +1,14 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {StyledCreateCv} from "./styles/styledCreateCv";
 import VerticalTabs from "./components/Tabs";
 import Pdf from "../pdf/PDF";
 import {NavLink} from 'react-router-dom';
 import {PATH} from "../../../routes/Routes";
 import NavBar from "../../navBar/NavBar";
-import {useActions} from "../../../store/hooks/useActions";
-import {useTypeSelector} from "../../../store/hooks/useTypeSelector";
 
 const CreateCv = () => {
-const {getResume} = useActions()
-    const {user} = useTypeSelector(state => state.signUp.data)
-    console.log(user.email)
-    useEffect(()=> {getResume(user.email)}, [])
     return (
-        <div style={{height: '100vh'}}>
+        <div>
             <NavBar/>
             <StyledCreateCv>
                 <VerticalTabs/>
@@ -24,6 +18,7 @@ const {getResume} = useActions()
                     </NavLink>
                 </div>
             </StyledCreateCv>
+            <Pdf/>
         </div>
 
     );

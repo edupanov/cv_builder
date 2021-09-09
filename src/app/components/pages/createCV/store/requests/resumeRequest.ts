@@ -3,14 +3,15 @@ import {RequestSender} from "../../../../../shared/services/requestSenderService
 import {CvInterface} from "../../types/cvInterface";
 
 
-export const setResume = async (resume: CvInterface) => {
+export const setResume = async (resume: CvInterface, userId: string) => {
     const fullUrl = `${ResumeUrls.BASE_URL}${ResumeUrls.SAVE_RESUME_URL}`
 
-    return await RequestSender.post(fullUrl, resume)
+    return await RequestSender.post(fullUrl, {resume, userId})
 }
 
-export const getResume = async (email: string):Promise<any> => {
+export const getResume = async (email: string) => {
     const fullUrl = `${ResumeUrls.BASE_URL}${ResumeUrls.GET_RESUME_URL}`
+    const result = await RequestSender.post(fullUrl, {email})
 
-    return await RequestSender.post(fullUrl, {email})
+    return result.json()
 }

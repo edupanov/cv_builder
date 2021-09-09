@@ -81,9 +81,8 @@ module.exports = {
 
     getResume: async (req, res, next) => {
         const {email} = req.body
-        console.log(email)
 
-        await User.find({email: 'edupanov@gmail.com'})
+        await User.find({email})
             .populate(['cvs'])
             .then(async documents => {
                 const users = documents.map(resume => {

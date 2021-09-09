@@ -10,6 +10,7 @@ export const StyledNavBar = styled.div`
   .logo {
     width: 50px;
     height: 50px;
+    margin-left: 60px;
     background-image: url(".${logo}");
     background-size: cover;
   }

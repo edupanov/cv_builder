@@ -6,7 +6,7 @@ const {check} = require('express-validator')
 
 const router = express.Router()
 
-router.post('/save', ResumeController.saveResume)
+router.post('/save', ResumeController.saveUserResume)
 router.post('/login', UserController.login)
 router.post('/get', UserController.getResume)
 router.post('/registration',

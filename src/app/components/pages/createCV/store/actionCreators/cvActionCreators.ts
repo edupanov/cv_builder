@@ -11,11 +11,11 @@ export const saveCv = (cv: CvInterface) =>
 
     }
 
-export const saveCvServer = (resume: CvInterface) =>
+export const saveCvServer = (resume: CvInterface, userId: string) =>
     async (dispatch: Dispatch<cvActionType>, getState: () => RootState) => {
 
         dispatch({type: CvActionTypes.SAVE_CV_SERVER})
-        await ResumeRequests.setResume(resume)
+        await ResumeRequests.setResume(resume, userId)
             .then(async () => {
 
                 dispatch({type: CvActionTypes.SAVE_CV_SUCCESS})
@@ -30,8 +30,8 @@ export const getResume = (email: string) =>
         dispatch({type: CvActionTypes.GET_CV})
 
         await ResumeRequests.getResume(email)
-            .then(async (response: DefaultPagedResponse<Array<CvInterface>>) => {
-                console.log('')
+            .then(async (response) => {
+                console.log(response)
                 if (response.isSuccess) {
                     dispatch({
                         type: CvActionTypes.GET_CV_SUCCESS,
