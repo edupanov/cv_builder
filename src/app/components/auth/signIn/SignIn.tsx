@@ -22,7 +22,7 @@ const SignIn = (props: LoginFormType) => {
     const {signIn} = useActions()
     const {token, message} = useTypeSelector(state => state.signUp.data)
 
-    console.log('тест комицуктаефыаа')
+    console.log('тест комицуккуетаефыаа')
 
     const formik = useFormik({
         initialValues: {
