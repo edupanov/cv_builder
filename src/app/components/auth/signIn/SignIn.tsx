@@ -22,6 +22,8 @@ const SignIn = (props: LoginFormType) => {
     const {signIn} = useActions()
     const {token, message} = useTypeSelector(state => state.signUp.data)
 
+    console.log('тест комита')
+
     const formik = useFormik({
         initialValues: {
             email: '',
